@@ -1,0 +1,67 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="jquery.DadosTabela.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('#botao').click(function(){
+          //capturo com o plugin os dados da tabela
+          var tabela = $('#tabela').DadosTabela();
+
+          $.post('map_tabela_dados.php',{
+            acao: 'cria_tabela',
+            tabela: tabela
+          },function(r){
+            $('#tabela_aqui').html(r);
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <input type="button" id="botao" value="Capturar">
+    <table width="600" border="1" id="tabela">
+      <thead>
+        <tr>
+          <th width="70">Código</th>
+          <th>Nome</th>
+          <th>Sobrenome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Fernando</td>
+          <td>Wobeto</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Gregori</td>
+          <td>Maus</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Pedro</td>
+          <td>Cavalheiro</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Émerson</td>
+          <td>Engroff</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Daniel</td>
+          <td>Borba Cana</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
